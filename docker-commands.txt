@@ -1,0 +1,6 @@
+	1. mvn clean package -DskipTests
+	2. docker build -t springboot_rest_crud_api_with_jpa:5.8 .
+	3. docker run -d -it --name mysqlSpringboot_rest_crud_api_with_jpaC -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=springstudent" -e "MYSQL_USER=springstudent" -e "MYSQL_PASSWORD=springstudent" -e "MYSQL_DATABASE=employee_directory" mysql:5.7
+	4. docker run --name  springboot_rest_crud_api_with_jpaC --publish 8080:8080 --link mysqlSpringboot_rest_crud_api_with_jpaC:mysqlSpringboot_rest_crud_api_with_jpaC springboot_rest_crud_api_with_jpa:5.8  
+	5. winpty docker exec -it mysqlSpringboot_rest_crud_api_with_jpaC bash
+	6. mysql -uroot -p
